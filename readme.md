@@ -2,7 +2,7 @@
 
 ## Purpose
 
-In digital IC design with open source tools (such as Xschem, Magic, Ngspice) we need to simulate complex CMOS level digital 
+In digital IC design with open source tools (such as Xschem, Magic, Ngspice) we sometimes need to simulate complex CMOS level digital 
 circuits using "analog methods". This is different that mixed signal IC design where both spice netlists and HDL code are
 mixed together. To form complex input test patterns in Ngspice, the PULSE or PWL can be used. 
 This is doable for one or two input signals but when it comes to designing complex circuit e.g., a SRAM memory controller where
@@ -72,7 +72,7 @@ V104 WE GND pwl(0n,0 ,35n,0, 35n,1.8, 40n,1.8 ,65n,1.8, 65n,0, 70n,0 ,155n,0, 15
 
 ### Copy the content of the ngspice_output.txt file into Xschem or Ngspice netlist file and run the simulation 
 
-Issuing a `plot` command should graph a "true mixed signal input" plot similar to the following image:
+Issuing an Ngspice `plot` command should graph a "true mixed signal input" plot similar to the following image:
 
 ![Digital signal input using voltage source PWL](./images/inputs_plot.png)
 
