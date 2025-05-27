@@ -1,8 +1,26 @@
-# Wavedrom JSON to NGSpice PWL lines coverter
+# Wavedrom JSON to NGSpice PWL lines converter
 
-## Usage: 
+## Purpose
 
-### First design your digital input test patter in [Wavedrom](https://wavedrom.com/).
+In digital IC design using open source tools (such as Xschem, Magic, Ngspice) we need to simulate complex CMOS level digital 
+circuits using "analog methods". This is different that mixed signal IC design where both spice netlists and HDL code are
+mized together. To form complex input test patterns in Ngspice, the PULSE or PWL can be used. 
+This is doable for one or two input signals but when it comes to designing complex circuit e.g., a SRAM memory controller where
+there are more than ten input signals, complex digital inputs with complex relative timings must be set. This is tedious and needs
+automation.
+
+The PWL on voltage sources in Ngspice allows defining complex input signals. Meanwhile, the [Wavedrom](https://wavedrom.com/) 
+editor allows entering digital signals using a graphical user interface (GUI). It visualizes them and allows export in JSON format.
+
+One can write a Python script to convert this Wavedorm generated JSON content to Ngspice PWL lines and then user can easily copy
+these generated PWL lines into Xschem spice code symbol, allowing simulation of extremely complex CMOS digital circuits.
+
+## Usage
+
+Create input test pattern in the [Wavedrom](https://wavedrom.com/) and rund this Python script to get equivalent PWL lines ready to 
+be inserted into Ngspice netlist or Xschem code symbol.
+
+### First design your digital input test pattern in [Wavedrom](https://wavedrom.com/).
 
 For example, enter the following JSON content in Wavedorm editor:
 
@@ -20,9 +38,14 @@ The output waveform should be similar to the follwoing image:
 
 ![Wavedorm Editor Waveform Output](./images/wavedrom.png)
 
-### Copy the JSON Content into a textfile (For example, wavedrom_input.json)
+### Copy the JSON Content into a text file (e.g., wavedrom_input.json)
 
-### Clone the repository and invoke the wavedrom2pwl.py Python script
+### Clone this repository and invoke the wavedrom2pwl.py Python script
+
+```
+$ git clone https://github.com/ehsan-ali-th/wavedorm2pwl.git
+$ cd wavedorm2pwl
+```
 
 ```
 $python3 wavedrom2pwl.py wavedrom_input.json ngspice_output.txt
@@ -54,7 +77,7 @@ Issuing a plot command should graph a "true mixed signal input" plot similar to 
 
 ![Digital signal input using voltage source PWL](./images/inputs_plot)
 
-Author: Dr. Ehsan Ali
-Author's email: ehssan.aali@gmail.com
-Last Update: May, 2025 
-Version: 0.1
+- Author: Dr. Ehsan Ali
+- Author's email: ehssan.aali@gmail.com
+- Last Update: May, 2025 
+- Version: 0.1
