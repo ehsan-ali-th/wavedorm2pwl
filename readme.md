@@ -2,9 +2,9 @@
 
 ## Purpose
 
-In digital IC design using open source tools (such as Xschem, Magic, Ngspice) we need to simulate complex CMOS level digital 
+In digital IC design with open source tools (such as Xschem, Magic, Ngspice) we need to simulate complex CMOS level digital 
 circuits using "analog methods". This is different that mixed signal IC design where both spice netlists and HDL code are
-mized together. To form complex input test patterns in Ngspice, the PULSE or PWL can be used. 
+mixed together. To form complex input test patterns in Ngspice, the PULSE or PWL can be used. 
 This is doable for one or two input signals but when it comes to designing complex circuit e.g., a SRAM memory controller where
 there are more than ten input signals, complex digital inputs with complex relative timings must be set. This is tedious and needs
 automation.
@@ -17,7 +17,7 @@ these generated PWL lines into Xschem spice code symbol, allowing simulation of 
 
 ## Usage
 
-Create input test pattern in the [Wavedrom](https://wavedrom.com/) and rund this Python script to get equivalent PWL lines ready to 
+Create input test pattern in the [Wavedrom](https://wavedrom.com/) and run this Python script to get equivalent PWL lines ready to 
 be inserted into Ngspice netlist or Xschem code symbol.
 
 ### First design your digital input test pattern in [Wavedrom](https://wavedrom.com/).
@@ -57,9 +57,8 @@ where:
 
 Notes:
 - The JSON input must contain valid JSON text.
-- ALL JSON input fields must be double quoted. Look at the provided wavedrom.json sample file.
-
-Filename: wavedrom2pwl.py: This is the main Python script that defines states and run a state machine to convert Wavedrom JSON to NGSpice PWL lines.
+- ALL JSON input fields must be double quoted. Look at the provided [wavedrom.json](src/wavedrom.json) sample file.
+- wavedrom2pwl.py: This is the main Python script that defines states and run a state machine to convert Wavedrom JSON to NGSpice PWL lines.
 
 ### The script generates the ngspice_output.txt file which should have the following content
 
@@ -71,11 +70,11 @@ V103 CS GND pwl(0n,0 ,25n,0, 25n,1.8, 30n,1.8 ,75n,1.8, 75n,0, 80n,0 ,95n,0, 95n
 V104 WE GND pwl(0n,0 ,35n,0, 35n,1.8, 40n,1.8 ,65n,1.8, 65n,0, 70n,0 ,155n,0, 155n,1.8, 160n,1.8 ,185n,1.8, 185n,0, 190n,0)
 ```
 
-### Copy the content of the ngspice_output.txt file into your NGSpice file as a code snippet and run the simulation 
+### Copy the content of the ngspice_output.txt file into Xschem or Ngspice netlist file and run the simulation 
 
-Issuing a plot command should graph a "true mixed signal input" plot similar to the following image:
+Issuing a `plot` command should graph a "true mixed signal input" plot similar to the following image:
 
-![Digital signal input using voltage source PWL](./images/inputs_plot)
+![Digital signal input using voltage source PWL](./images/inputs_plot.png)
 
 - Author: Dr. Ehsan Ali
 - Author's email: ehssan.aali@gmail.com
