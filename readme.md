@@ -3,7 +3,7 @@
 ## Purpose
 
 In digital IC design with open source tools (such as Xschem, Magic, Ngspice) we sometimes need to simulate complex CMOS level digital 
-circuits using "analog methods". This is different that mixed signal IC design where both spice netlists and HDL code are
+circuits using "analog methods". This is different than mixed signal IC design where both spice netlists and HDL code are
 mixed together. To form complex input test patterns in Ngspice, the PULSE or PWL can be used. 
 This is doable for one or two input signals but when it comes to designing complex circuit e.g., a SRAM memory controller where
 there are more than ten input signals, complex digital inputs with complex relative timings must be set. This is tedious and needs
