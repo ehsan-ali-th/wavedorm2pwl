@@ -76,6 +76,8 @@ Issuing an Ngspice `plot` command should graph a "true mixed signal input" plot 
 
 ![Digital signal input using voltage source PWL](./images/inputs_plot.png)
 
+### TODO: Adding rise and fall slope to PWL signal edges.
+
 - Author: Dr. Ehsan Ali
 - Author's email: ehssan.aali@gmail.com
 - Last Update: May, 2025 
